@@ -1,2 +1,2 @@
-# scalajs-flux
-Type-safe and Scala-friendly library over Facebook's Flux.
+# scalajs-google-maps
+Type-safe and Scala-friendly library over Google Maps.
