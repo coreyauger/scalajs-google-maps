@@ -10,6 +10,8 @@ package google {
 
 package maps {
 
+import google.maps.Data.Geometry
+
 @JSName("google.maps.MVCObject")
 class MVCObject extends js.Object {
   def addListener(eventName: String, handler: js.Function): MapsEventListener = js.native
@@ -106,8 +108,7 @@ class Map protected() extends MVCObject {
   var overlayMapTypes: MVCArray = js.native
 }
 
-//class MapOptions extends js.Object {
-//@JSName("google.maps.MapOptions")
+
 trait MapOptions extends js.Object {
   var backgroundColor: String = js.native
   var center: LatLng = js.native
@@ -370,6 +371,8 @@ class Data protected() extends MVCObject {
 
   def getMap(): Map = js.native
 
+  def getStyle(): Data.StyleOptions = js.native
+
   def loadGeoJson(url: String, options: Data.GeoJsonOptions = ???, callback: js.Function1[js.Array[Data.Feature], Unit] = ???): Unit = js.native
 
   def overrideStyle(feature: Data.Feature, style: Data.StyleOptions): Unit = js.native
@@ -380,7 +383,7 @@ class Data protected() extends MVCObject {
 
   def setMap(map: Map): Unit = js.native
 
-  def setStyle(style: Data.StylingFunction): Unit = js.native
+  def setStyle(style: Data.StyleOptions): Unit = js.native
 
   def toGeoJson(callback: js.Function1[Object, Unit]): Unit = js.native
 }
@@ -390,6 +393,14 @@ object Data {
 trait DataOptions extends js.Object {
   var map: Map = js.native
 }
+
+  object DataOptions{
+    def apply(gmap:Map) ={
+      js.Dynamic.literal(
+        map = gmap
+      ).asInstanceOf[DataOptions]
+    }
+  }
 
 trait GeoJsonOptions extends js.Object {
   var idPropertyName: String = js.native
@@ -409,6 +420,37 @@ trait StyleOptions extends js.Object {
   var visible: Boolean = js.native
   var zIndex: Double = js.native
 }
+  object StyleOptions{
+    def apply(
+               clickable:Boolean = true,
+               cursor: String = "",
+               fillColor: String = "",
+               fillOpacity: Double = 1.0,
+               icon: js.Any = null,
+               shape: MarkerShape = null,
+               strokeColor:String = "",
+               strokeOpacity:Double = 1.0,
+               strokeWeight:Double = 1.0,
+               title: String = "",
+               visible: Boolean = true,
+               zIndex: Double = 1.0
+            ):StyleOptions ={
+      js.Dynamic.literal(
+        clickable= clickable,
+        cursor = cursor,
+        fillColor = fillColor,
+        fillOpacity =fillOpacity,
+        icon = icon,
+        shape=shape,
+        strokeColor=strokeColor,
+        strokeOpacity=strokeOpacity,
+        strokeWeight=strokeWeight,
+        title=title,
+        visible=visible,
+        zIndex=zIndex
+      ).asInstanceOf[StyleOptions]
+    }
+  }
 
   type StylingFunction = (Data.Feature) => Data.StyleOptions
 
@@ -438,6 +480,16 @@ trait FeatureOptions extends js.Object {
   var id: String = js.native
   var properties: Object = js.native
 }
+
+  object FeatureOptions{
+    def apply(geometry: Data.Geometry, id: String, properties:js.Any = null):FeatureOptions = {
+      js.Dynamic.literal(
+        geometry = geometry,
+        id = id,
+        properties = properties
+      ).asInstanceOf[FeatureOptions]
+    }
+  }
 
 @JSName("google.maps.Data.Geometry")
 class Geometry extends js.Object {
@@ -641,6 +693,44 @@ trait MarkerOptions extends js.Object {
   var zIndex: Double = js.native
 }
 
+  object MarkerOptions{
+    def apply(
+      animation: Animation = null,
+      clickable: Boolean = true,
+      cursor: String = "",
+      draggable: Boolean = false,
+      flat: Boolean = true,
+      icon: js.Any = null,
+      map: js.Any = null,
+      optimized: Boolean = true,
+      position: LatLng = null,
+      raiseOnDrag: Boolean = true,
+      shadow: js.Any = null,
+      shape: MarkerShape = null,
+      title: String = "",
+      visible: Boolean = true,
+      zIndex: Double = 1.0
+               ):MarkerOptions ={
+      js.Dynamic.literal(
+        animation = animation,
+        clickable = clickable,
+        cursor = cursor,
+        draggable = draggable,
+        flat = flat,
+        icon = icon,
+        map = map,
+        optimized = optimized,
+        position = position,
+        raiseOnDrag = raiseOnDrag,
+        shadow = shadow,
+        shape = shape,
+        title = title,
+        visible = visible,
+        zIndex = zIndex
+      ).asInstanceOf[MarkerOptions]
+    }
+  }
+
 @JSName("google.maps.MarkerImage")
 class MarkerImage protected() extends js.Object {
   def this(url: String, size: Size = ???, origin: Point = ???, anchor: Point = ???, scaledSize: Size = ???) = this()
@@ -656,6 +746,15 @@ trait MarkerShape extends js.Object {
   var coords: js.Array[Double] = js.native
   var `type`: String = js.native
 }
+
+  object MarkerShape{
+    def apply(coords:js.Array[Double], shape:String = ""):MarkerShape = {
+      js.Dynamic.literal(
+        coords = coords,
+        `type` = shape
+      ).asInstanceOf[MarkerShape]
+    }
+  }
 
 trait Symbol extends js.Object {
   var anchor: Point = js.native
@@ -728,6 +827,25 @@ trait InfoWindowOptions extends js.Object {
   var zIndex: Double = js.native
 }
 
+  object InfoWindowOptions{
+    def apply(
+               content: String = "<div>Hello World!</div>",
+               disableAutoPan:Boolean = false,
+               maxWidth:Double = Double.MaxValue,
+               pixelOffset:Size = null,
+               position:LatLng = null,
+               zIndex:Double = 1.0):InfoWindowOptions ={
+      js.Dynamic.literal(
+        content =content,
+        disableAutoPan = disableAutoPan,
+        maxWidth = maxWidth,
+        pixelOffset = pixelOffset,
+        position = position,
+        zIndex = zIndex
+      ).asInstanceOf[InfoWindowOptions]
+    }
+  }
+
 @JSName("google.maps.Polyline")
 class Polyline protected() extends MVCObject {
   def this(opts: PolylineOptions = ???) = this()
@@ -769,6 +887,38 @@ trait PolylineOptions extends js.Object {
   var visible: Boolean = js.native
   var zIndex: Double = js.native
 }
+
+  object PolylineOptions{
+    def apply(
+      clickable: Boolean = false,
+      draggable: Boolean = false,
+      editable: Boolean = false,
+      geodesic: Boolean = false,
+      icons: js.Array[IconSequence] = null,
+      map: Map = null,
+      path: js.Array[js.Any] = null,
+      strokeColor: String = "",
+      strokeOpacity: Double = 1.0,
+      strokeWeight: Double = 1.0,
+      visible: Boolean = true,
+      zIndex: Double = 1.0
+               ):PolylineOptions = {
+      js.Dynamic.literal(
+        clickable = clickable,
+        draggable =draggable,
+        editable= editable,
+        geodesic = geodesic,
+        icons = icons,
+        map = map,
+        path = path,
+        strokeColor = strokeColor,
+        strokeOpacity = strokeOpacity,
+        strokeWeight = strokeWeight,
+        visible = visible,
+        zIndex = zIndex
+      ).asInstanceOf[PolylineOptions]
+    }
+  }
 
 trait IconSequence extends js.Object {
   var fixedRotation: Boolean = js.native
@@ -827,6 +977,41 @@ trait PolygonOptions extends js.Object {
   var zIndex: Double = js.native
 }
 
+  object PolygonOptions{
+    def apply(
+        clickable: Boolean = false,
+        draggable: Boolean = false,
+        editable: Boolean = false,
+        fillColor: String = "",
+        fillOpacity: Double = 1.0,
+        geodesic: Boolean = false,
+        map: Map = null,
+        paths: js.Array[js.Any] = null,
+        strokeColor: String = "",
+        strokeOpacity: Double = 1.0,
+        strokePosition: StrokePosition = null,
+        strokeWeight: Double = 1.0,
+        visible: Boolean = true,
+        zIndex: Double = 1.0):PolygonOptions ={
+      js.Dynamic.literal(
+        clickable = clickable,
+        draggable = draggable,
+        editable = editable,
+        fillColor = fillColor,
+        fillOpacity = fillOpacity,
+        geodesic = geodesic,
+        map = map,
+        paths = paths,
+        strokeColor = strokeColor,
+        strokeOpacity = strokeOpacity,
+        strokePosition = strokePosition,
+        strokeWeight = strokeWeight,
+        visible = visible,
+        zIndex = zIndex
+      ).asInstanceOf[PolygonOptions]
+    }
+  }
+
 trait PolyMouseEvent extends js.Object {
   var edge: Double = js.native
   var path: Double = js.native
@@ -875,6 +1060,42 @@ trait RectangleOptions extends js.Object {
   var visible: Boolean = js.native
   var zIndex: Double = js.native
 }
+
+  object RectangleOptions{
+    def apply(
+         bounds: LatLngBounds = null,
+         clickable: Boolean = false,
+         draggable: Boolean = false,
+         editable: Boolean = false,
+         fillColor: String = "",
+         fillOpacity: Double = 1.0,
+         map: Map = null,
+         paths: js.Array[js.Any] = null,
+         strokeColor: String = "",
+         strokeOpacity: Double = 1.0,
+         strokePosition: StrokePosition = null,
+         strokeWeight: Double = 1.0,
+         visible: Boolean = true,
+         zIndex: Double = 1.0
+               ):RectangleOptions = {
+      js.Dynamic.literal(
+        bounds = bounds,
+        clickable = clickable,
+        draggable = draggable,
+        editable = editable,
+        fillColor = fillColor,
+        fillOpacity = fillOpacity,
+        map = map,
+        paths = paths,
+        strokeColor = strokeColor,
+        strokeOpacity = strokeOpacity,
+        strokePosition = strokePosition,
+        strokeWeight = strokeWeight,
+        visible = visible,
+        zIndex = zIndex
+      ).asInstanceOf[RectangleOptions]
+    }
+  }
 
 @JSName("google.maps.Circle")
 class Circle protected() extends MVCObject {
@@ -926,6 +1147,44 @@ trait CircleOptions extends js.Object {
   var zIndex: Double = js.native
 }
 
+
+object CircleOptions{
+  def apply(
+             center: LatLng = null,
+             clickable: Boolean = false,
+             draggable: Boolean = false,
+             editable: Boolean = false,
+             fillColor: String = "",
+             fillOpacity: Double = 1.0,
+             map: Map = null,
+             radius: Double = 1.0,
+             strokeColor: String = "",
+             strokeOpacity: Double = 1.0,
+             strokePosition: StrokePosition = null,
+             strokeWeight: Double = 1.0,
+             visible: Boolean = true,
+             zIndex: Double = 1.0
+             ):CircleOptions = {
+    js.Dynamic.literal(
+      center = center,
+      clickable = clickable,
+      draggable = draggable,
+      editable = editable,
+      fillColor = fillColor,
+      fillOpacity = fillOpacity,
+      map = map,
+      radius = radius,
+      strokeColor = strokeColor,
+      strokeOpacity = strokeOpacity,
+      strokePosition = strokePosition,
+      strokeWeight = strokeWeight,
+      visible = visible,
+      zIndex = zIndex
+    ).asInstanceOf[CircleOptions]
+  }
+}
+
+
 sealed trait StrokePosition extends js.Object {
 }
 
@@ -960,6 +1219,22 @@ trait GroundOverlayOptions extends js.Object {
   var clickable: Boolean = js.native
   var map: Map = js.native
   var opacity: Double = js.native
+}
+
+
+
+object GroundOverlayOptions{
+  def apply(
+             clickable: Boolean = false,
+             map: Map = null,
+             opacity: Double = 1.0
+             ):GroundOverlayOptions = {
+    js.Dynamic.literal(
+      clickable = clickable,
+      map = map,
+      opacity = opacity
+    ).asInstanceOf[GroundOverlayOptions]
+  }
 }
 
 @JSName("google.maps.OverlayView")
@@ -1013,6 +1288,22 @@ trait GeocoderRequest extends js.Object {
   var location: LatLng = js.native
   var region: String = js.native
 }
+
+  object GeocoderRequest{
+    def apply(
+      address: String = "",
+      bounds: LatLngBounds = null,
+      location: LatLng = null,
+      region: String = ""
+               ):GeocoderRequest ={
+     js.Dynamic.literal(
+       address = address,
+       bounds = bounds,
+       location = location,
+       region = region
+     ).asInstanceOf[GeocoderRequest]
+    }
+  }
 
 sealed trait GeocoderStatus extends js.Object {
 }
@@ -1103,6 +1394,43 @@ trait DirectionsRendererOptions extends js.Object {
   var suppressInfoWindows: Boolean = js.native
   var suppressMarkers: Boolean = js.native
   var suppressPolylines: Boolean = js.native
+}
+
+
+object DirectionsRendererOptions{
+  def apply(
+        directions: DirectionsResult = null,
+        draggable: Boolean = false,
+        hideRouteList: Boolean = false,
+        infoWindow: InfoWindow = null,
+        map: Map = null,
+        markerOptions: MarkerOptions = null,
+        panel: Element = null,
+        polylineOptions: PolylineOptions = null,
+        preserveViewport: Boolean = true,
+        routeIndex: Double = 0,
+        suppressBicyclingLayer: Boolean = true,
+        suppressInfoWindows: Boolean = false,
+        suppressMarkers: Boolean = false,
+        suppressPolylines: Boolean = false
+             ):DirectionsRendererOptions = {
+    js.Dynamic.literal(
+      directions = directions,
+      draggable = draggable,
+      hideRouteList = hideRouteList,
+      infoWindow = infoWindow,
+      map = map,
+      markerOptions = markerOptions,
+      panel = panel,
+      polylineOptions = polylineOptions,
+      preserveViewport = preserveViewport,
+      routeIndex =routeIndex,
+      suppressBicyclingLayer = suppressBicyclingLayer,
+      suppressInfoWindows = suppressInfoWindows,
+      suppressMarkers = suppressMarkers,
+      suppressPolylines = suppressPolylines
+    ).asInstanceOf[DirectionsRendererOptions]
+  }
 }
 
 @JSName("google.maps.DirectionsService")
@@ -1788,7 +2116,7 @@ trait MouseEvent extends js.Object {
 }
 
 @JSName("google.maps.LatLng")
-class LatLng protected() extends js.Object {
+class LatLng protected() extends Geometry {
   def this(lat: Double, lng: Double, noWrap: Boolean = ???) = this()
 
   def equals(other: LatLng): Boolean = js.native

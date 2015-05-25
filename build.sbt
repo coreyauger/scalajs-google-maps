@@ -1,9 +1,25 @@
 import SonatypeKeys._
 
+import sbt.Keys._
+
 sonatypeSettings
 
 lazy val root = project.in(file(".")).
   enablePlugins(ScalaJSPlugin)
+
+lazy val demo = (project in file("demo"))
+  .settings(demoSettings:_*)
+  .enablePlugins(ScalaJSPlugin)
+  .dependsOn(root)
+
+
+lazy val demoSettings = Seq(
+  name := s"gmap-demo",
+  scalaVersion := "2.11.6",
+  libraryDependencies ++= Seq(
+    "org.scala-js" %%% "scalajs-dom" % "0.8.0"
+  )
+)
 
 name := "Type-safe and Scala-friendly library over Google Maps"
 
