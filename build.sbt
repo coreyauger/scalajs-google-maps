@@ -5,9 +5,9 @@ sonatypeSettings
 lazy val root = project.in(file(".")).
   enablePlugins(ScalaJSPlugin)
 
-name := "Type-safe and Scala-friendly library over Facebook's Flux"
+name := "Type-safe and Scala-friendly library over Google Maps"
 
-normalizedName := "scalajs-flux"
+normalizedName := "scalajs-google-maps"
 
 version := "0.1-SNAPSHOT"
 
@@ -21,7 +21,7 @@ libraryDependencies ++= Seq(
   "org.scala-js" %%% "scalajs-dom" % "0.8.0"
 )
 
-jsDependencies += "org.webjars" % "flux"                 % "2.0.2" / "Flux.js"
+//jsDependencies += "org.webjars" % "flux"                 % "2.0.2" / "Flux.js"
 
 jsDependencies in Test += RuntimeDOM
 
@@ -30,9 +30,9 @@ homepage := Some(url("http://www.surfkit.io/"))
 licenses += ("MIT License", url("http://www.opensource.org/licenses/mit-license.php"))
 
 scmInfo := Some(ScmInfo(
-    url("https://github.com/coreyauger/scalajs-flux"),
-    "scm:git:git@github.com/coreyauger/scalajs-flux.git",
-    Some("scm:git:git@github.com:coreyauger/scalajs-flux.git")))
+    url("https://github.com/coreyauger/scalajs-google-maps"),
+    "scm:git:git@github.com/coreyauger/scalajs-google-maps.git",
+    Some("scm:git:git@github.com:coreyauger/scalajs-google-maps.git")))
 
 publishMavenStyle := true
 
