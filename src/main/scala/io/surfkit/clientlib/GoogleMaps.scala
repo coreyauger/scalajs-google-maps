@@ -695,52 +695,67 @@ trait MarkerOptions extends js.Object {
 
   object MarkerOptions{
     def apply(
-      animation: Animation = null,
-      clickable: Boolean = true,
-      cursor: String = "",
-      draggable: Boolean = false,
-      flat: Boolean = true,
-      icon: js.Any = null,
-      map: js.Any = null,
-      optimized: Boolean = true,
-      position: LatLng = null,
-      raiseOnDrag: Boolean = true,
-      shadow: js.Any = null,
-      shape: MarkerShape = null,
-      title: String = "",
-      visible: Boolean = true,
-      zIndex: Double = 1.0
+      animation: js.UndefOr[Animation] = js.undefined,
+      clickable: js.UndefOr[Boolean] = js.undefined,
+      cursor: js.UndefOr[String] = js.undefined,
+      draggable: js.UndefOr[Boolean] = js.undefined,
+      flat: js.UndefOr[Boolean] = js.undefined,
+      icon: js.UndefOr[MarkerImage] = js.undefined,
+      map: Map,
+      optimized: js.UndefOr[Boolean] = js.undefined,
+      position: LatLng,
+      raiseOnDrag: js.UndefOr[Boolean] = js.undefined,
+      shadow: js.UndefOr[js.Any] = js.undefined,
+      shape: js.UndefOr[MarkerShape ] = js.undefined,
+      title: js.UndefOr[String] = js.undefined,
+      visible: js.UndefOr[Boolean] = js.undefined,
+      zIndex: js.UndefOr[Double] = js.undefined
                ):MarkerOptions ={
-      js.Dynamic.literal(
-        animation = animation,
-        clickable = clickable,
-        cursor = cursor,
-        draggable = draggable,
-        flat = flat,
-        icon = icon,
-        map = map,
-        optimized = optimized,
-        position = position,
-        raiseOnDrag = raiseOnDrag,
-        shadow = shadow,
-        shape = shape,
-        title = title,
-        visible = visible,
-        zIndex = zIndex
-      ).asInstanceOf[MarkerOptions]
+      val result = js.Dynamic.literal()
+      clickable.foreach(result.clickable = _)
+      cursor.foreach(result.cursor = _)
+      draggable.foreach(result.draggable = _)
+      flat.foreach(result.flat = _)
+      result.map = map
+      optimized.foreach(result.optimized = _)
+      optimized.foreach(result.optimized = _)
+      result.position = position
+      raiseOnDrag.foreach(result.raiseOnDrag = _)
+      shadow.foreach(result.shadow = _)
+      shape.foreach(result.shape = _)
+      title.foreach(result.title = _)
+      visible.foreach(result.visible = _)
+      zIndex.foreach(result.zIndex = _)
+      result.asInstanceOf[MarkerOptions]
     }
   }
 
-@JSName("google.maps.MarkerImage")
-class MarkerImage protected() extends js.Object {
-  def this(url: String, size: Size = ???, origin: Point = ???, anchor: Point = ???, scaledSize: Size = ???) = this()
-
+@js.native
+trait MarkerImage extends js.Object {
   var anchor: Point = js.native
   var origin: Point = js.native
   var scaledSize: Size = js.native
   var size: Size = js.native
   var url: String = js.native
 }
+
+object MarkerImage{
+  def apply(
+      anchor: js.UndefOr[Point] = js.undefined,
+      origin: js.UndefOr[Point] = js.undefined,
+      scaledSize: js.UndefOr[Size] = js.undefined,
+      size: Size,
+      url: String):MarkerImage = {
+    val result = js.Dynamic.literal()
+    result.size = size
+    result.url = url
+    anchor.foreach(result.anchor = _)
+    origin.foreach(result.origin = _)
+    scaledSize.foreach(result.scaledSize = _)
+    result.asInstanceOf[MarkerImage]
+  }
+}
+
 
 trait MarkerShape extends js.Object {
   var coords: js.Array[Double] = js.native
@@ -1291,17 +1306,17 @@ trait GeocoderRequest extends js.Object {
 
   object GeocoderRequest{
     def apply(
-      address: String = "",
-      bounds: LatLngBounds = null,
-      location: LatLng = null,
-      region: String = ""
+      address: js.UndefOr[String] = js.undefined,
+      bounds: js.UndefOr[LatLngBounds] = js.undefined,
+      location: js.UndefOr[LatLng] = js.undefined,
+      region: js.UndefOr[String] = js.undefined
                ):GeocoderRequest ={
-     js.Dynamic.literal(
-       address = address,
-       bounds = bounds,
-       location = location,
-       region = region
-     ).asInstanceOf[GeocoderRequest]
+      val result = js.Dynamic.literal()
+      address.foreach(result.address = _)
+      bounds.foreach(result.bounds = _)
+      location.foreach(result.location = _)
+      region.foreach(result.region = _)
+      result.asInstanceOf[GeocoderRequest]
     }
   }
 
@@ -1399,37 +1414,38 @@ trait DirectionsRendererOptions extends js.Object {
 
 object DirectionsRendererOptions{
   def apply(
-        directions: DirectionsResult = null,
-        draggable: Boolean = false,
-        hideRouteList: Boolean = false,
-        infoWindow: InfoWindow = null,
-        map: Map = null,
-        markerOptions: MarkerOptions = null,
-        panel: Element = null,
-        polylineOptions: PolylineOptions = null,
-        preserveViewport: Boolean = true,
-        routeIndex: Double = 0,
-        suppressBicyclingLayer: Boolean = true,
-        suppressInfoWindows: Boolean = false,
-        suppressMarkers: Boolean = false,
-        suppressPolylines: Boolean = false
+        directions: js.UndefOr[DirectionsResult] = js.undefined,
+        draggable: js.UndefOr[Boolean] = js.undefined,
+        hideRouteList: js.UndefOr[Boolean] = js.undefined,
+        infoWindow: js.UndefOr[InfoWindow] = js.undefined,
+        map: Map,
+        markerOptions: js.UndefOr[MarkerOptions] = js.undefined,
+        panel: js.UndefOr[Element] = js.undefined,
+        polylineOptions: js.UndefOr[PolylineOptions] = js.undefined,
+        preserveViewport: js.UndefOr[Boolean] = js.undefined,
+        routeIndex: js.UndefOr[Double] = js.undefined,
+        suppressBicyclingLayer: js.UndefOr[Boolean] = js.undefined,
+        suppressInfoWindows: js.UndefOr[Boolean] = js.undefined,
+        suppressMarkers: js.UndefOr[Boolean] = js.undefined,
+        suppressPolylines: js.UndefOr[Boolean] = js.undefined
              ):DirectionsRendererOptions = {
-    js.Dynamic.literal(
-      directions = directions,
-      draggable = draggable,
-      hideRouteList = hideRouteList,
-      infoWindow = infoWindow,
-      map = map,
-      markerOptions = markerOptions,
-      panel = panel,
-      polylineOptions = polylineOptions,
-      preserveViewport = preserveViewport,
-      routeIndex =routeIndex,
-      suppressBicyclingLayer = suppressBicyclingLayer,
-      suppressInfoWindows = suppressInfoWindows,
-      suppressMarkers = suppressMarkers,
-      suppressPolylines = suppressPolylines
-    ).asInstanceOf[DirectionsRendererOptions]
+    val result = js.Dynamic.literal()
+    result.map = map
+    directions.foreach(result.directions = _)
+    draggable.foreach(result.draggable = _)
+    hideRouteList.foreach(result.hideRouteList = _)
+    infoWindow.foreach(result.infoWindow = _)
+    markerOptions.foreach(result.markerOptions = _)
+    panel.foreach(result.panel = _)
+    polylineOptions.foreach(result.polylineOptions = _)
+    preserveViewport.foreach(result.preserveViewport = _)
+    routeIndex.foreach(result.routeIndex = _)
+    suppressBicyclingLayer.foreach(result.suppressBicyclingLayer = _)
+    suppressInfoWindows.foreach(result.suppressInfoWindows = _)
+    suppressMarkers.foreach(result.suppressMarkers = _)
+    suppressPolylines.foreach(result.suppressPolylines = _)
+    result.asInstanceOf[DirectionsRendererOptions]
+
   }
 }
 
@@ -2044,7 +2060,7 @@ trait StreetViewPov extends js.Object {
 }
 
 trait StreetViewPanoramaData extends js.Object {
-  var opyright: String = js.native
+  var copyright: String = js.native
   var imageDate: String = js.native
   var links: js.Array[StreetViewLink] = js.native
   var location: StreetViewLocation = js.native
@@ -2173,7 +2189,7 @@ class Point protected() extends js.Object {
 
 @JSName("google.maps.Size")
 class Size protected() extends js.Object {
-  def this(width: Double, height: Double, widthUnit: String = ???, heightUnit: String = ???) = this()
+  def this(width: Double, height: Double, widthUnit: js.UndefOr[String] = js.undefined, heightUnit: js.UndefOr[String] = js.undefined) = this()
 
   var height: Double = js.native
   var width: Double = js.native
