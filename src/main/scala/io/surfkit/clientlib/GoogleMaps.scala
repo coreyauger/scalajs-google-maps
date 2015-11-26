@@ -746,7 +746,7 @@ trait MarkerOptions extends js.Object {
       cursor: js.UndefOr[String] = js.undefined,
       draggable: js.UndefOr[Boolean] = js.undefined,
       flat: js.UndefOr[Boolean] = js.undefined,
-      icon: js.UndefOr[MarkerImage] = js.undefined,
+      icon: js.UndefOr[js.Any] = js.undefined,
       map: Map,
       optimized: js.UndefOr[Boolean] = js.undefined,
       position: LatLng,
@@ -762,6 +762,7 @@ trait MarkerOptions extends js.Object {
       cursor.foreach(result.cursor = _)
       draggable.foreach(result.draggable = _)
       flat.foreach(result.flat = _)
+      icon.foreach(result.icon = _)
       result.map = map
       optimized.foreach(result.optimized = _)
       optimized.foreach(result.optimized = _)
