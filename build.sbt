@@ -17,7 +17,7 @@ lazy val demoSettings = Seq(
   name := s"gmap-demo",
   scalaVersion := "2.11.6",
   libraryDependencies ++= Seq(
-    "org.scala-js" %%% "scalajs-dom" % "0.8.0"
+    "org.scala-js" %%% "scalajs-dom" % "0.9.0"
   )
 )
 
