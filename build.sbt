@@ -30,7 +30,7 @@ name := "Type-safe and Scala-friendly library over Google Maps"
 
 normalizedName := "scalajs-google-maps"
 
-version := "0.0.1-SNAPSHOT"
+version := "0.0.1"
 
 organization := "io.surfkit"
 
