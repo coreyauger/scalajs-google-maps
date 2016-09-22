@@ -18,7 +18,7 @@ To get started you will need a google maps api key.  You can [get an api key her
 
 ### Build.sbt
 Add the following dependency to your porject.
-
+`resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"`
 `"io.surfkit" %%% "scalajs-google-maps" % "0.1-SNAPSHOT",`
 
 ## Some Examples
