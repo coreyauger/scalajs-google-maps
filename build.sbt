@@ -1,15 +1,15 @@
-//import SonatypeKeys._
+import SonatypeKeys._
 
 import sbt.Keys._
 
-//sonatypeSettings
+sonatypeSettings
 
 lazy val root = project.in(file(".")).
   enablePlugins(ScalaJSPlugin).settings(
-	  credentials += Credentials(Path.userHome / ".ivy2" / ".credentials"),
-	  resolvers += "NextWave Repo" at "http://maxdevmaster.cloudapp.net:4343/artifactory/nxtwv-maven/",
-	  publishTo := Some("NextWave Repo" at "http://maxdevmaster.cloudapp.net:4343/artifactory/nxtwv-maven/")
-//publishMavenStyle := true
+	  //credentials += Credentials(Path.userHome / ".ivy2" / ".credentials"),
+	  //resolvers += "NextWave Repo" at "http://maxdevmaster.cloudapp.net:4343/artifactory/nxtwv-maven/",
+	  //publishTo := Some("NextWave Repo" at "http://maxdevmaster.cloudapp.net:4343/artifactory/nxtwv-maven/")
+	  publishMavenStyle := true
 	)
 
 lazy val demo = (project in file("demo"))
@@ -30,7 +30,7 @@ name := "Type-safe and Scala-friendly library over Google Maps"
 
 normalizedName := "scalajs-google-maps"
 
-version := "0.0.2-SNAPSHOT"
+version := "0.0.2"
 
 organization := "io.surfkit"
 
@@ -56,13 +56,13 @@ scmInfo := Some(ScmInfo(
 
 publishMavenStyle := true
 
-//publishTo := {
-//  val nexus = "https://oss.sonatype.org/"
-//  if (isSnapshot.value)
-//    Some("snapshots" at nexus + "content/repositories/snapshots")
-//  else
-//    Some("releases" at nexus + "service/local/staging/deploy/maven2")
-//}
+publishTo := {
+  val nexus = "https://oss.sonatype.org/"
+  if (isSnapshot.value)
+    Some("snapshots" at nexus + "content/repositories/snapshots")
+  else
+    Some("releases" at nexus + "service/local/staging/deploy/maven2")
+}
 
 pomExtra := (
   <developers>
