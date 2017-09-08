@@ -40,6 +40,7 @@ object ScalaJSGMapExample extends js.JSApp {
         streetViewControl = false,
         mapTypeControl = false)
         val gmap = new google.maps.Map(document.getElementById("map-canvas"), opts)
+        ""
     }
     google.maps.event.addDomListener(window, "load", initialize)
   }
@@ -65,6 +66,7 @@ object ScalaJSGMapExample extends js.JSApp {
           map = gmap,
           title = "Marker"
         ))
+        ""
     }
     google.maps.event.addDomListener(window, "load", initialize)
   }
@@ -104,9 +106,9 @@ object ScalaJSGMapExample extends js.JSApp {
           println("Marker click !")
           infowindow.open(gmap,marker)
         })
+        ""
     }
     google.maps.event.addDomListener(window, "load", initialize)
   }
 }
 ```
-
