@@ -12,7 +12,7 @@ package maps {
 
 import google.maps.Data.Geometry
 
-@JSName("google.maps.MVCObject")
+@JSGlobal("google.maps.MVCObject")
 @js.native
 class MVCObject extends js.Object {
   def addListener(eventName: String, handler: js.Function): MapsEventListener = js.native
@@ -34,7 +34,7 @@ class MVCObject extends js.Object {
   def unbindAll(): Unit = js.native
 }
 
-@JSName("google.maps.MVCArray")
+@JSGlobal("google.maps.MVCArray")
 @js.native
 class MVCArray protected() extends MVCObject {
   def this(array: js.Array[js.Any] = ???) = this()
@@ -60,7 +60,7 @@ class MVCArray protected() extends MVCObject {
   def setAt(i: Double, elem: js.Any): Unit = js.native
 }
 
-@JSName("google.maps.Map")
+@JSGlobal("google.maps.Map")
 @js.native
 class Map protected() extends MVCObject {
   def this(mapDiv: Element, opts: MapOptions = ???) = this()
@@ -238,7 +238,7 @@ object MapOptions {
 sealed trait MapTypeId extends js.Object {
 }
 
-@JSName("google.maps.MapTypeId")
+@JSGlobal("google.maps.MapTypeId")
 @js.native
 object MapTypeId extends js.Object {
   var HYBRID: MapTypeId = js.native
@@ -261,7 +261,7 @@ trait MapTypeControlOptions extends js.Object {
 sealed trait MapTypeControlStyle extends js.Object {
 }
 
-@JSName("google.maps.MapTypeControlStyle")
+@JSGlobal("google.maps.MapTypeControlStyle")
 @js.native
 object MapTypeControlStyle extends js.Object {
   var DEFAULT: MapTypeControlStyle = js.native
@@ -297,7 +297,7 @@ trait ScaleControlOptions extends js.Object {
 sealed trait ScaleControlStyle extends js.Object {
 }
 
-@JSName("google.maps.ScaleControlStyle")
+@JSGlobal("google.maps.ScaleControlStyle")
 @js.native
 object ScaleControlStyle extends js.Object {
   var DEFAULT: ScaleControlStyle = js.native
@@ -321,7 +321,7 @@ trait ZoomControlOptions extends js.Object {
 sealed trait ZoomControlStyle extends js.Object {
 }
 
-@JSName("google.maps.ZoomControlStyle")
+@JSGlobal("google.maps.ZoomControlStyle")
 @js.native
 object ZoomControlStyle extends js.Object {
   var DEFAULT: ZoomControlStyle = js.native
@@ -336,7 +336,7 @@ object ZoomControlStyle extends js.Object {
 sealed trait ControlPosition extends js.Object {
 }
 
-@JSName("google.maps.ControlPosition")
+@JSGlobal("google.maps.ControlPosition")
 @js.native
 object ControlPosition extends js.Object {
   var BOTTOM_CENTER: ControlPosition = js.native
@@ -366,7 +366,7 @@ trait NavigationControlOptions extends js.Object {
 sealed trait NavigationControlStyle extends js.Object {
 }
 
-@JSName("google.maps.NavigationControlStyle")
+@JSGlobal("google.maps.NavigationControlStyle")
 @js.native
 object NavigationControlStyle extends js.Object {
   var DEFAULT: NavigationControlStyle = js.native
@@ -378,7 +378,7 @@ object NavigationControlStyle extends js.Object {
   def apply(value: NavigationControlStyle): String = js.native
 }
 
-@JSName("google.maps.Data")
+@JSGlobal("google.maps.Data")
 @js.native
 class Data protected() extends MVCObject {
   def this(options: Data.DataOptions = ???) = this()
@@ -480,7 +480,7 @@ trait StyleOptions extends js.Object {
 
   type StylingFunction = (Data.Feature) => Data.StyleOptions
 
-@JSName("google.maps.Data.Feature")
+@JSGlobal("google.maps.Data.Feature")
 @js.native
 class Feature protected() extends js.Object {
   def this(options: Data.FeatureOptions = ???) = this()
@@ -519,13 +519,13 @@ trait FeatureOptions extends js.Object {
     }
   }
 
-@JSName("google.maps.Data.Geometry")
+@JSGlobal("google.maps.Data.Geometry")
 @js.native
 class Geometry extends js.Object {
   def getType(): String = js.native
 }
 
-@JSName("google.maps.Data.Point")
+@JSGlobal("google.maps.Data.Point")
 @js.native
 class Point protected() extends Data.Geometry {
   def this(latLng: LatLng) = this()
@@ -533,7 +533,7 @@ class Point protected() extends Data.Geometry {
   def get(): LatLng = js.native
 }
 
-@JSName("google.maps.Data.MultiPoint")
+@JSGlobal("google.maps.Data.MultiPoint")
 @js.native
 class MultiPoint protected() extends Data.Geometry {
   def this(elements: js.Array[LatLng]) = this()
@@ -543,7 +543,7 @@ class MultiPoint protected() extends Data.Geometry {
   def getLength(): Double = js.native
 }
 
-@JSName("google.maps.Data.LineString")
+@JSGlobal("google.maps.Data.LineString")
 @js.native
 class LineString protected() extends Data.Geometry {
   def this(elements: js.Array[LatLng]) = this()
@@ -555,7 +555,7 @@ class LineString protected() extends Data.Geometry {
   def getLength(): Double = js.native
 }
 
-@JSName("google.maps.Data.MultiLineString")
+@JSGlobal("google.maps.Data.MultiLineString")
 @js.native
 class MultiLineString protected() extends Data.Geometry {
   def this(elements: js.Array[Data.LineString]) = this()
@@ -567,7 +567,7 @@ class MultiLineString protected() extends Data.Geometry {
   def getLength(): Double = js.native
 }
 
-@JSName("google.maps.Data.LinearRing")
+@JSGlobal("google.maps.Data.LinearRing")
 @js.native
 class LinearRing protected() extends Data.Geometry {
   def this(elements: js.Array[LatLng]) = this()
@@ -579,7 +579,7 @@ class LinearRing protected() extends Data.Geometry {
   def getLength(): Double = js.native
 }
 
-@JSName("google.maps.Data.Polygon")
+@JSGlobal("google.maps.Data.Polygon")
 @js.native
 class Polygon protected() extends Data.Geometry {
   def this(elements: js.Array[LinearRing]) = this()
@@ -591,7 +591,7 @@ class Polygon protected() extends Data.Geometry {
   def getLength(): Double = js.native
 }
 
-@JSName("google.maps.Data.MultiPolygon")
+@JSGlobal("google.maps.Data.MultiPolygon")
 @js.native
 class MultiPolygon protected() extends Data.Geometry {
   def this(elements: js.Array[Data.Polygon]) = this()
@@ -603,7 +603,7 @@ class MultiPolygon protected() extends Data.Geometry {
   def getLength(): Double = js.native
 }
 
-@JSName("google.maps.Data.GeometryCollection")
+@JSGlobal("google.maps.Data.GeometryCollection")
 @js.native
 class GeometryCollection protected() extends Data.Geometry {
   def this(elements: js.Array[Data.Geometry]) = this()
@@ -654,7 +654,7 @@ trait RemovePropertyEvent extends js.Object {
 
 }
 
-@JSName("google.maps.Marker")
+@JSGlobal("google.maps.Marker")
 @js.native
 class Marker protected() extends MVCObject {
   def this(opts: MarkerOptions = ???) = this()
@@ -714,7 +714,7 @@ class Marker protected() extends MVCObject {
   def setZIndex(zIndex: Double): Unit = js.native
 }
 
-@JSName("google.maps.Marker")
+@JSGlobal("google.maps.Marker")
 @js.native
 object Marker extends js.Object {
   var MAX_ZINDEX: Double = js.native
@@ -833,7 +833,7 @@ trait Symbol extends js.Object {
 sealed trait SymbolPath extends js.Object {
 }
 
-@JSName("google.maps.SymbolPath")
+@JSGlobal("google.maps.SymbolPath")
 @js.native
 object SymbolPath extends js.Object {
   var BACKWARD_CLOSED_ARROW: SymbolPath = js.native
@@ -850,7 +850,7 @@ object SymbolPath extends js.Object {
 sealed trait Animation extends js.Object {
 }
 
-@JSName("google.maps.Animation")
+@JSGlobal("google.maps.Animation")
 @js.native
 object Animation extends js.Object {
   var BOUNCE: Animation = js.native
@@ -860,7 +860,7 @@ object Animation extends js.Object {
   def apply(value: Animation): String = js.native
 }
 
-@JSName("google.maps.InfoWindow")
+@JSGlobal("google.maps.InfoWindow")
 @js.native
 class InfoWindow protected() extends MVCObject {
   def this(opts: InfoWindowOptions = ???) = this()
@@ -913,7 +913,7 @@ trait InfoWindowOptions extends js.Object {
     }
   }
 
-@JSName("google.maps.Polyline")
+@JSGlobal("google.maps.Polyline")
 @js.native
 class Polyline protected() extends MVCObject {
   def this(opts: PolylineOptions = ???) = this()
@@ -997,7 +997,7 @@ trait IconSequence extends js.Object {
   var repeat: String = js.native
 }
 
-@JSName("google.maps.Polygon")
+@JSGlobal("google.maps.Polygon")
 @js.native
 class Polygon protected() extends MVCObject {
   def this(opts: PolygonOptions = ???) = this()
@@ -1091,7 +1091,7 @@ trait PolyMouseEvent extends js.Object {
   var vertex: Double = js.native
 }
 
-@JSName("google.maps.Rectangle")
+@JSGlobal("google.maps.Rectangle")
 @js.native
 class Rectangle protected() extends MVCObject {
   def this(opts: RectangleOptions = ???) = this()
@@ -1172,7 +1172,7 @@ trait RectangleOptions extends js.Object {
     }
   }
 
-@JSName("google.maps.Circle")
+@JSGlobal("google.maps.Circle")
 @js.native
 class Circle protected() extends MVCObject {
   def this(opts: CircleOptions = ???) = this()
@@ -1265,7 +1265,7 @@ object CircleOptions{
 sealed trait StrokePosition extends js.Object {
 }
 
-@JSName("google.maps.StrokePosition")
+@JSGlobal("google.maps.StrokePosition")
 @js.native
 object StrokePosition extends js.Object {
   var CENTER: StrokePosition = js.native
@@ -1276,7 +1276,7 @@ object StrokePosition extends js.Object {
   def apply(value: StrokePosition): String = js.native
 }
 
-@JSName("google.maps.GroundOverlay")
+@JSGlobal("google.maps.GroundOverlay")
 @js.native
 class GroundOverlay protected() extends MVCObject {
   def this(url: String, bounds: LatLngBounds, opts: GroundOverlayOptions = ???) = this()
@@ -1317,7 +1317,7 @@ object GroundOverlayOptions{
   }
 }
 
-@JSName("google.maps.OverlayView")
+@JSGlobal("google.maps.OverlayView")
 @js.native
 class OverlayView extends MVCObject {
   def draw(): Unit = js.native
@@ -1346,7 +1346,7 @@ trait MapPanes extends js.Object {
   var overlayShadow: Element = js.native
 }
 
-@JSName("google.maps.MapCanvasProjection")
+@JSGlobal("google.maps.MapCanvasProjection")
 @js.native
 class MapCanvasProjection extends MVCObject {
   def fromContainerPixelToLatLng(pixel: Point, nowrap: Boolean = ???): LatLng = js.native
@@ -1360,7 +1360,7 @@ class MapCanvasProjection extends MVCObject {
   def getWorldWidth(): Double = js.native
 }
 
-@JSName("google.maps.Geocoder")
+@JSGlobal("google.maps.Geocoder")
 @js.native
 class Geocoder extends js.Object {
   def geocode(request: GeocoderRequest, callback: js.Function2[js.Array[GeocoderResult], GeocoderStatus, Unit]): Unit = js.native
@@ -1394,7 +1394,7 @@ trait GeocoderRequest extends js.Object {
 sealed trait GeocoderStatus extends js.Object {
 }
 
-@JSName("google.maps.GeocoderStatus")
+@JSGlobal("google.maps.GeocoderStatus")
 @js.native
 object GeocoderStatus extends js.Object {
   var ERROR: GeocoderStatus = js.native
@@ -1436,7 +1436,7 @@ trait GeocoderGeometry extends js.Object {
 sealed trait GeocoderLocationType extends js.Object {
 }
 
-@JSName("google.maps.GeocoderLocationType")
+@JSGlobal("google.maps.GeocoderLocationType")
 @js.native
 object GeocoderLocationType extends js.Object {
   var APPROXIMATE: GeocoderLocationType = js.native
@@ -1448,7 +1448,7 @@ object GeocoderLocationType extends js.Object {
   def apply(value: GeocoderLocationType): String = js.native
 }
 
-@JSName("google.maps.DirectionsRenderer")
+@JSGlobal("google.maps.DirectionsRenderer")
 @js.native
 class DirectionsRenderer protected() extends MVCObject {
   def this(opts: DirectionsRendererOptions = ???) = this()
@@ -1528,7 +1528,7 @@ object DirectionsRendererOptions{
   }
 }
 
-@JSName("google.maps.DirectionsService")
+@JSGlobal("google.maps.DirectionsService")
 @js.native
 class DirectionsService extends js.Object {
   def route(request: DirectionsRequest, callback: js.Function2[DirectionsResult, DirectionsStatus, Unit]): Unit = js.native
@@ -1553,7 +1553,7 @@ trait DirectionsRequest extends js.Object {
 sealed trait TravelMode extends js.Object {
 }
 
-@JSName("google.maps.TravelMode")
+@JSGlobal("google.maps.TravelMode")
 @js.native
 object TravelMode extends js.Object {
   var BICYCLING: TravelMode = js.native
@@ -1569,7 +1569,7 @@ object TravelMode extends js.Object {
 sealed trait UnitSystem extends js.Object {
 }
 
-@JSName("google.maps.UnitSystem")
+@JSGlobal("google.maps.UnitSystem")
 @js.native
 object UnitSystem extends js.Object {
   var IMPERIAL: UnitSystem = js.native
@@ -1595,7 +1595,7 @@ trait DirectionsWaypoint extends js.Object {
 sealed trait DirectionsStatus extends js.Object {
 }
 
-@JSName("google.maps.DirectionsStatus")
+@JSGlobal("google.maps.DirectionsStatus")
 @js.native
 object DirectionsStatus extends js.Object {
   var INVALID_REQUEST: DirectionsStatus = js.native
@@ -1717,7 +1717,7 @@ trait TransitVehicle extends js.Object {
   var `type`: String = js.native
 }
 
-@JSName("google.maps.ElevationService")
+@JSGlobal("google.maps.ElevationService")
 @js.native
 class ElevationService extends js.Object {
   def getElevationAlongPath(request: PathElevationRequest, callback: js.Function2[js.Array[ElevationResult], ElevationStatus, Unit]): Unit = js.native
@@ -1747,7 +1747,7 @@ trait ElevationResult extends js.Object {
 sealed trait ElevationStatus extends js.Object {
 }
 
-@JSName("google.maps.ElevationStatus")
+@JSGlobal("google.maps.ElevationStatus")
 @js.native
 object ElevationStatus extends js.Object {
   var INVALID_REQUEST: ElevationStatus = js.native
@@ -1760,7 +1760,7 @@ object ElevationStatus extends js.Object {
   def apply(value: ElevationStatus): String = js.native
 }
 
-@JSName("google.maps.MaxZoomService")
+@JSGlobal("google.maps.MaxZoomService")
 @js.native
 class MaxZoomService extends js.Object {
   def getMaxZoomAtLatLng(latlng: LatLng, callback: js.Function1[MaxZoomResult, Unit]): Unit = js.native
@@ -1776,7 +1776,7 @@ trait MaxZoomResult extends js.Object {
 sealed trait MaxZoomStatus extends js.Object {
 }
 
-@JSName("google.maps.MaxZoomStatus")
+@JSGlobal("google.maps.MaxZoomStatus")
 @js.native
 object MaxZoomStatus extends js.Object {
   var ERROR: MaxZoomStatus = js.native
@@ -1786,7 +1786,7 @@ object MaxZoomStatus extends js.Object {
   def apply(value: MaxZoomStatus): String = js.native
 }
 
-@JSName("google.maps.DistanceMatrixService")
+@JSGlobal("google.maps.DistanceMatrixService")
 @js.native
 class DistanceMatrixService extends js.Object {
   def getDistanceMatrix(request: DistanceMatrixRequest, callback: js.Function2[DistanceMatrixResponse, DistanceMatrixStatus, Unit]): Unit = js.native
@@ -1826,7 +1826,7 @@ trait DistanceMatrixResponseElement extends js.Object {
 sealed trait DistanceMatrixStatus extends js.Object {
 }
 
-@JSName("google.maps.DistanceMatrixStatus")
+@JSGlobal("google.maps.DistanceMatrixStatus")
 @js.native
 object DistanceMatrixStatus extends js.Object {
   var INVALID_REQUEST: DistanceMatrixStatus = js.native
@@ -1845,7 +1845,7 @@ object DistanceMatrixStatus extends js.Object {
 sealed trait DistanceMatrixElementStatus extends js.Object {
 }
 
-@JSName("google.maps.DistanceMatrixElementStatus")
+@JSGlobal("google.maps.DistanceMatrixElementStatus")
 @js.native
 object DistanceMatrixElementStatus extends js.Object {
   var NOT_FOUND: DistanceMatrixElementStatus = js.native
@@ -1871,7 +1871,7 @@ trait MapType extends js.Object {
   var tileSize: Size = js.native
 }
 
-@JSName("google.maps.MapTypeRegistry")
+@JSGlobal("google.maps.MapTypeRegistry")
 @js.native
 class MapTypeRegistry extends MVCObject {
   def set(id: String, mapType: MapType): Unit = js.native
@@ -1884,7 +1884,7 @@ trait Projection extends js.Object {
   def fromPointToLatLng(pixel: Point, noWrap: Boolean = ???): LatLng = js.native
 }
 
-@JSName("google.maps.ImageMapType")
+@JSGlobal("google.maps.ImageMapType")
 @js.native
 class ImageMapType protected() extends MVCObject with MapType {
   def this(opts: ImageMapTypeOptions) = this()
@@ -1909,7 +1909,7 @@ trait ImageMapTypeOptions extends js.Object {
   var tileSize: Size = js.native
 }
 
-@JSName("google.maps.StyledMapType")
+@JSGlobal("google.maps.StyledMapType")
 @js.native
 class StyledMapType protected() extends js.Object {
   def this(styles: js.Array[MapTypeStyle], options: StyledMapTypeOptions = ???) = this()
@@ -1945,7 +1945,7 @@ trait MapTypeStyleFeatureType extends js.Object {
 sealed trait MapTypeStyleElementType extends js.Object {
 }
 
-@JSName("google.maps.MapTypeStyleElementType")
+@JSGlobal("google.maps.MapTypeStyleElementType")
 @js.native
 object MapTypeStyleElementType extends js.Object {
   var all: MapTypeStyleElementType = js.native
@@ -1966,7 +1966,7 @@ trait MapTypeStyler extends js.Object {
   var visibility: String = js.native
 }
 
-@JSName("google.maps.BicyclingLayer")
+@JSGlobal("google.maps.BicyclingLayer")
 @js.native
 class BicyclingLayer extends MVCObject {
   def getMap(): Map = js.native
@@ -1974,7 +1974,7 @@ class BicyclingLayer extends MVCObject {
   def setMap(map: Map): Unit = js.native
 }
 
-@JSName("google.maps.FusionTablesLayer")
+@JSGlobal("google.maps.FusionTablesLayer")
 @js.native
 class FusionTablesLayer protected() extends MVCObject {
   def this(options: FusionTablesLayerOptions) = this()
@@ -2054,7 +2054,7 @@ trait FusionTablesCell extends js.Object {
   var value: String = js.native
 }
 
-@JSName("google.maps.KmlLayer")
+@JSGlobal("google.maps.KmlLayer")
 @js.native
 class KmlLayer protected() extends MVCObject {
   def this(url: String, opts: KmlLayerOptions = ???) = this()
@@ -2092,7 +2092,7 @@ trait KmlLayerMetadata extends js.Object {
 sealed trait KmlLayerStatus extends js.Object {
 }
 
-@JSName("google.maps.KmlLayerStatus")
+@JSGlobal("google.maps.KmlLayerStatus")
 @js.native
 object KmlLayerStatus extends js.Object {
   var DOCUMENT_NOT_FOUND: KmlLayerStatus = js.native
@@ -2133,7 +2133,7 @@ trait KmlAuthor extends js.Object {
   var uri: String = js.native
 }
 
-@JSName("google.maps.TrafficLayer")
+@JSGlobal("google.maps.TrafficLayer")
 @js.native
 class TrafficLayer extends MVCObject {
   def getMap(): Unit = js.native
@@ -2141,7 +2141,7 @@ class TrafficLayer extends MVCObject {
   def setMap(map: Map): Unit = js.native
 }
 
-@JSName("google.maps.TransitLayer")
+@JSGlobal("google.maps.TransitLayer")
 @js.native
 class TransitLayer extends MVCObject {
   def getMap(): Unit = js.native
@@ -2149,7 +2149,7 @@ class TransitLayer extends MVCObject {
   def setMap(map: Map): Unit = js.native
 }
 
-@JSName("google.maps.StreetViewPanorama")
+@JSGlobal("google.maps.StreetViewPanorama")
 @js.native
 class StreetViewPanorama protected() extends js.Object {
   def this(container: Element, opts: StreetViewPanoramaOptions = ???) = this()
@@ -2240,7 +2240,7 @@ trait StreetViewTileData extends js.Object {
   var worldSize: Size = js.native
 }
 
-@JSName("google.maps.StreetViewService")
+@JSGlobal("google.maps.StreetViewService")
 @js.native
 class StreetViewService extends js.Object {
   def getPanoramaById(pano: String, callback: js.Function2[StreetViewPanoramaData, StreetViewStatus, Unit]): Unit = js.native
@@ -2252,7 +2252,7 @@ class StreetViewService extends js.Object {
 sealed trait StreetViewStatus extends js.Object {
 }
 
-@JSName("google.maps.StreetViewStatus")
+@JSGlobal("google.maps.StreetViewStatus")
 @js.native
 object StreetViewStatus extends js.Object {
   var OK: StreetViewStatus = js.native
@@ -2267,12 +2267,12 @@ object StreetViewStatus extends js.Object {
 trait MapsEventListener extends js.Object {
 }
 
-@JSName("google.maps.event")
+@JSGlobal("google.maps.event")
 @js.native
 class event extends js.Object {
 }
 
-@JSName("google.maps.event")
+@JSGlobal("google.maps.event")
 @js.native
 object event extends js.Object {
   def addDomListener(instance: js.Any, eventName: String, handler: js.Function, capture: Boolean = ???): MapsEventListener = js.native
@@ -2299,7 +2299,7 @@ trait MouseEvent extends js.Object {
   var latLng: LatLng = js.native
 }
 
-@JSName("google.maps.LatLng")
+@JSGlobal("google.maps.LatLng")
 @js.native
 class LatLng protected() extends Geometry {
   def this(lat: Double, lng: Double, noWrap: Boolean = ???) = this()
@@ -2315,7 +2315,7 @@ class LatLng protected() extends Geometry {
   def toUrlValue(precision: Double = ???): String = js.native
 }
 
-@JSName("google.maps.LatLngBounds")
+@JSGlobal("google.maps.LatLngBounds")
 @js.native
 class LatLngBounds protected() extends js.Object {
   def this(sw: LatLng = ???, ne: LatLng = ???) = this()
@@ -2345,7 +2345,7 @@ class LatLngBounds protected() extends js.Object {
   def union(other: LatLngBounds): LatLngBounds = js.native
 }
 
-@JSName("google.maps.Point")
+@JSGlobal("google.maps.Point")
 @js.native
 class Point protected() extends js.Object {
   def this(x: Double, y: Double) = this()
@@ -2358,7 +2358,7 @@ class Point protected() extends js.Object {
   override def toString(): String = js.native
 }
 
-@JSName("google.maps.Size")
+@JSGlobal("google.maps.Size")
 @js.native
 class Size protected() extends js.Object {
   def this(width: Double, height: Double, widthUnit: js.UndefOr[String] = js.undefined, heightUnit: js.UndefOr[String] = js.undefined) = this()
@@ -2373,12 +2373,12 @@ class Size protected() extends js.Object {
 
 package geometry {
 
-@JSName("google.maps.geometry.encoding")
+@JSGlobal("google.maps.geometry.encoding")
 @js.native
 class encoding extends js.Object {
 }
 
-@JSName("google.maps.geometry.encoding")
+@JSGlobal("google.maps.geometry.encoding")
 @js.native
 object encoding extends js.Object {
   def decodePath(encodedPath: String): js.Array[LatLng] = js.native
@@ -2386,12 +2386,12 @@ object encoding extends js.Object {
   def encodePath(path: js.Array[js.Any]): String = js.native
 }
 
-@JSName("google.maps.geometry.spherical")
+@JSGlobal("google.maps.geometry.spherical")
 @js.native
 class spherical extends js.Object {
 }
 
-@JSName("google.maps.geometry.spherical")
+@JSGlobal("google.maps.geometry.spherical")
 @js.native
 object spherical extends js.Object {
   def computeArea(path: js.Array[js.Any], radius: Double = ???): Double = js.native
@@ -2409,12 +2409,12 @@ object spherical extends js.Object {
   def interpolate(from: LatLng, to: LatLng, fraction: Double): LatLng = js.native
 }
 
-@JSName("google.maps.geometry.poly")
+@JSGlobal("google.maps.geometry.poly")
 @js.native
 class poly extends js.Object {
 }
 
-@JSName("google.maps.geometry.poly")
+@JSGlobal("google.maps.geometry.poly")
 @js.native
 object poly extends js.Object {
   def containsLocation(point: LatLng, polygon: Polygon): Boolean = js.native
@@ -2426,7 +2426,7 @@ object poly extends js.Object {
 
 package adsense {
 
-@JSName("google.maps.adsense.AdUnit")
+@JSGlobal("google.maps.adsense.AdUnit")
 @js.native
 class AdUnit protected() extends MVCObject {
   def this(container: Element, opts: AdUnitOptions) = this()
@@ -2465,7 +2465,7 @@ trait AdUnitOptions extends js.Object {
 sealed trait AdFormat extends js.Object {
 }
 
-@JSName("google.maps.adsense.AdFormat")
+@JSGlobal("google.maps.adsense.AdFormat")
 @js.native
 object AdFormat extends js.Object {
   var BANNER: AdFormat = js.native
@@ -2489,7 +2489,7 @@ object AdFormat extends js.Object {
 
 package panoramio {
 
-@JSName("google.maps.panoramio.PanoramioLayer")
+@JSGlobal("google.maps.panoramio.PanoramioLayer")
 @js.native
 class PanoramioLayer protected() extends MVCObject {
   def this(opts: PanoramioLayerOptions = ???) = this()
@@ -2538,7 +2538,7 @@ trait PanoramioMouseEvent extends js.Object {
 
 package places {
 
-@JSName("google.maps.places.AutocompleteService")
+@JSGlobal("google.maps.places.AutocompleteService")
 @js.native
 class AutocompleteService extends MVCObject {
   def getPlacePredictions(request: AutocompletionRequest, callback: js.Function2[js.Array[AutocompletePrediction], PlacesServiceStatus, Unit]): Unit = js.native
@@ -2595,7 +2595,7 @@ trait QueryAutocompletePrediction extends js.Object {
   var terms: js.Array[PredictionTerm] = js.native
 }
 
-@JSName("google.maps.places.Autocomplete")
+@JSGlobal("google.maps.places.Autocomplete")
 @js.native
 class Autocomplete protected() extends MVCObject {
   def this(inputField: html.Input, opts: AutocompleteOptions = ???) = this()
@@ -2711,7 +2711,7 @@ trait PlaceSearchPagination extends js.Object {
   var hasNextPage: Boolean = js.native
 }
 
-@JSName("google.maps.places.PlacesService")
+@JSGlobal("google.maps.places.PlacesService")
 @js.native
 class PlacesService protected() extends js.Object {
   def this(attrContainer: html.Div) = this()
@@ -2728,7 +2728,7 @@ class PlacesService protected() extends js.Object {
 sealed trait PlacesServiceStatus extends js.Object {
 }
 
-@JSName("google.maps.places.PlacesServiceStatus")
+@JSGlobal("google.maps.places.PlacesServiceStatus")
 @js.native
 object PlacesServiceStatus extends js.Object {
   var INVALID_REQUEST: PlacesServiceStatus = js.native
@@ -2755,7 +2755,7 @@ trait RadarSearchRequest extends js.Object {
 sealed trait RankBy extends js.Object {
 }
 
-@JSName("google.maps.places.RankBy")
+@JSGlobal("google.maps.places.RankBy")
 @js.native
 object RankBy extends js.Object {
   var DISTANCE: RankBy = js.native
@@ -2765,7 +2765,7 @@ object RankBy extends js.Object {
   def apply(value: RankBy): String = js.native
 }
 
-@JSName("google.maps.places.SearchBox")
+@JSGlobal("google.maps.places.SearchBox")
 @js.native
 class SearchBox protected() extends MVCObject {
   def this(inputField: html.Input, opts: SearchBoxOptions = ???) = this()
@@ -2795,7 +2795,7 @@ trait TextSearchRequest extends js.Object {
 
 package drawing {
 
-@JSName("google.maps.drawing.DrawingManager")
+@JSGlobal("google.maps.drawing.DrawingManager")
 @js.native
 class DrawingManager protected() extends MVCObject {
   def this(options: DrawingManagerOptions = ???) = this()
@@ -2839,7 +2839,7 @@ trait OverlayCompleteEvent extends js.Object {
 sealed trait OverlayType extends js.Object {
 }
 
-@JSName("google.maps.drawing.OverlayType")
+@JSGlobal("google.maps.drawing.OverlayType")
 @js.native
 object OverlayType extends js.Object {
   var CIRCLE: OverlayType = js.native
@@ -2856,7 +2856,7 @@ object OverlayType extends js.Object {
 
 package weather {
 
-@JSName("google.maps.weather.CloudLayer")
+@JSGlobal("google.maps.weather.CloudLayer")
 @js.native
 class CloudLayer extends MVCObject {
   def getMap(): Map = js.native
@@ -2864,7 +2864,7 @@ class CloudLayer extends MVCObject {
   def setMap(map: Map): Unit = js.native
 }
 
-@JSName("google.maps.weather.WeatherLayer")
+@JSGlobal("google.maps.weather.WeatherLayer")
 @js.native
 class WeatherLayer protected() extends MVCObject {
   def this(opts: WeatherLayerOptions = ???) = this()
@@ -2889,7 +2889,7 @@ trait WeatherLayerOptions extends js.Object {
 sealed trait TemperatureUnit extends js.Object {
 }
 
-@JSName("google.maps.weather.TemperatureUnit")
+@JSGlobal("google.maps.weather.TemperatureUnit")
 @js.native
 object TemperatureUnit extends js.Object {
   var CELSIUS: TemperatureUnit = js.native
@@ -2902,7 +2902,7 @@ object TemperatureUnit extends js.Object {
 sealed trait WindSpeedUnit extends js.Object {
 }
 
-@JSName("google.maps.weather.WindSpeedUnit")
+@JSGlobal("google.maps.weather.WindSpeedUnit")
 @js.native
 object WindSpeedUnit extends js.Object {
   var KILOMETERS_PER_HOUR: WindSpeedUnit = js.native
@@ -2916,7 +2916,7 @@ object WindSpeedUnit extends js.Object {
 sealed trait LabelColor extends js.Object {
 }
 
-@JSName("google.maps.weather.LabelColor")
+@JSGlobal("google.maps.weather.LabelColor")
 @js.native
 object LabelColor extends js.Object {
   var BLACK: LabelColor = js.native
@@ -2969,7 +2969,7 @@ trait WeatherForecast extends js.Object {
 
 package visualization {
 
-@JSName("google.maps.visualization.HeatmapLayer")
+@JSGlobal("google.maps.visualization.HeatmapLayer")
 @js.native
 class HeatmapLayer protected() extends MVCObject {
   def this(opts: HeatmapLayerOptions = ???) = this()
@@ -3000,13 +3000,13 @@ trait WeightedLocation extends js.Object {
   var weight: Double = js.native
 }
 
-@JSName("google.maps.visualization.MouseEvent")
+@JSGlobal("google.maps.visualization.MouseEvent")
 @js.native
 class MouseEvent extends js.Object {
   def stop(): Unit = js.native
 }
 
-@JSName("google.maps.visualization.MapsEventListener")
+@JSGlobal("google.maps.visualization.MapsEventListener")
 @js.native
 class MapsEventListener extends js.Object {
 }
