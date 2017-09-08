@@ -21,7 +21,7 @@ Add the following dependency to your porject.
 
 `resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"`
 
-`"io.surfkit" %%% "scalajs-google-maps" % "0.0.2-SNAPSHOT",`
+`"io.surfkit" %%% "scalajs-google-maps" % "0.0.3-SNAPSHOT",`
 
 ## Some Examples
 Here are some of the google maps examples demonstrated in a type safe scalaJS way.
