@@ -18,11 +18,14 @@ lazy val demo = (project in file("demo"))
   .dependsOn(root)
 
 
+val scalaV = "2.12.2"
+val scalajsDomV = "0.9.1"
+
 lazy val demoSettings = Seq(
   name := s"gmap-demo",
-  scalaVersion := "2.11.6",
+  scalaVersion := scalaV,
   libraryDependencies ++= Seq(
-    "org.scala-js" %%% "scalajs-dom" % "0.9.0"
+    "org.scala-js" %%% "scalajs-dom" % scalajsDomV
   )
 )
 
@@ -30,16 +33,16 @@ name := "Type-safe and Scala-friendly library over Google Maps"
 
 normalizedName := "scalajs-google-maps"
 
-version := "0.0.2"
+version := "0.0.3"
 
 organization := "io.surfkit"
 
-scalaVersion := "2.11.6"
+scalaVersion := scalaV
 
-crossScalaVersions := Seq("2.10.4", "2.11.5")
+crossScalaVersions := Seq("2.10.4", "2.11.5", scalaV)
 
 libraryDependencies ++= Seq(
-  "org.scala-js" %%% "scalajs-dom" % "0.9.0"
+  "org.scala-js" %%% "scalajs-dom" % scalajsDomV
 )
 
 jsDependencies in Test += RuntimeDOM
